@@ -38,20 +38,20 @@ analyse = [
     "pytest-cov",
     # Building
     "scikit-build-core",
-    "shiboken6_generator==6.5.3",
-    "PySide6==6.5.3",
+    "shiboken6_generator==6.7.2",
+    "PySide6==6.7.2",
     "setuptools_scm",
 ]
 
 [build-system]
-requires = ["scikit-build-core", "shiboken6_generator==6.5.3", "PySide6==6.5.3"]
+requires = ["scikit-build-core", "shiboken6_generator==6.7.2", "PySide6==6.7.2"]
 build-backend = "scikit_build_core.build"
 
 [tool.scikit-build]
 metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
 sdist.include = ["QuickGraphLib/_version.py"]
 sdist.exclude = [".github", ".vscode"]
-wheel.py-api = "cp37"
+wheel.py-api = "cp312"
 
 [tool.scikit-build.cmake.define]
 INSTALL_SUBPATH = "."
@@ -61,9 +61,7 @@ write_to = "QuickGraphLib/_version.py"
 
 [tool.cibuildwheel]
 build = [
-    "cp37-macosx_x86_64",
-    "cp37-win_amd64",
-    "cp37-manylinux_x86_64",
+    "cp312-win_amd64",
     # "cp37-manylinux_aarch64",
 ]
 before-all = "python ci/setup_qt.py"
