@@ -24,6 +24,6 @@ if(NOT INSTALL_SUBPATH)
 endif()
 
 find_package(Qt6 REQUIRED COMPONENTS Quick Svg)
-qt_standard_project_setup(REQUIRES 6.6.3)
+qt_standard_project_setup(REQUIRES 6.5)
 
 add_subdirectory(QuickGraphLib)
