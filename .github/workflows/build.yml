@@ -31,7 +31,7 @@ jobs:
         uses: jurplel/install-qt-action@v4
         with:
           aqtversion: "==3.1.*"
-          version: "6.7.2"
+          version: "6.6.3"
           setup-python: 'false'
           archives: "qttools qtdeclarative qtbase qtsvg icu"
           documentation: true
