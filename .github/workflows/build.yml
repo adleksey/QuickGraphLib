@@ -32,6 +32,7 @@ jobs:
         with:
           aqtversion: "==3.1.*"
           version: "6.7.2"
+          setup-python: 'false'
           archives: "qttools qtdeclarative qtbase qtsvg icu"
           documentation: true
           doc-archives: "qtcore qtgui qtqml qtqmlcore qtqmlmodels qtquick qtquickcontrols qtquickdialogs qtsvg"
