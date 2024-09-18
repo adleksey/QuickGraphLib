@@ -13,6 +13,8 @@ jobs:
   static-analysis:
     name: Static analysis and build docs
     runs-on: windows-2022
+    env:
+      LLVM_INSTALL_DIR: ${{ runner.temp }}/llvm
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,7 +53,11 @@ jobs:
 
       - uses: KyleMayes/install-llvm-action@v2
         with:
-          version: 18
+          version: "18.1.8"
+          directory: ${{ runner.temp }}/llvm
+
+      - name: "check llvm"
+        run: echo "LLVM_INSTALL_DIR is $LLVM_INSTALL_DIR"
 
       - name: Setup env
         run: .\setup_venv
@@ -68,6 +74,8 @@ jobs:
       matrix:
         os: [windows-latest]
     runs-on: ${{ matrix.os }}
+    env:
+      LLVM_INSTALL_DIR: ${{ runner.temp }}/llvm
     needs: static-analysis
     steps:
       - name: "Download sdist"
@@ -82,7 +90,11 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v2
         if: ${{ matrix.os }} == 'windows-latest'
         with:
-          version: 18
+          version: "18.1.8"
+          directory: ${{ runner.temp }}/llvm
+
+      - name: "check llvm"
+        run: echo "LLVM_INSTALL_DIR is $LLVM_INSTALL_DIR"
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.21.1
