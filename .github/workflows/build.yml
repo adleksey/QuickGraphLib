@@ -14,7 +14,7 @@ jobs:
     name: Static analysis and build docs
     runs-on: windows-2022
     env:
-      LLVM_INSTALL_DIR: "C:\Program Files\LLVM"
+      LLVM_INSTALL_DIR: "C:\\Program Files\\LLVM"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -54,7 +54,7 @@ jobs:
       - uses: KyleMayes/install-llvm-action@v2
         with:
           version: "18.1.8"
-          directory: "C:\Program Files\LLVM"
+          directory: "C:\\Program Files\\LLVM"
 
       - name: "check llvm"
         run: echo "LLVM_INSTALL_DIR is $LLVM_INSTALL_DIR"
@@ -75,7 +75,7 @@ jobs:
         os: [windows-latest]
     runs-on: ${{ matrix.os }}
     env:
-      LLVM_INSTALL_DIR: "C:\Program Files\LLVM"
+      LLVM_INSTALL_DIR: "C:\\Program Files\\LLVM"
     needs: static-analysis
     steps:
       - name: "Download sdist"
@@ -91,7 +91,7 @@ jobs:
         if: ${{ matrix.os }} == 'windows-latest'
         with:
           version: "18.1.8"
-          directory: "C:\Program Files\LLVM"
+          directory: "C:\\Program Files\\LLVM"
 
       - name: "check llvm"
         run: echo "LLVM_INSTALL_DIR is $LLVM_INSTALL_DIR"
