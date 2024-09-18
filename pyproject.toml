@@ -27,30 +27,21 @@ Source = "https://github.com/refeyn/QuickGraphLib"
 
 [project.optional-dependencies]
 analyse = [
-    # Code analysis
-    "black",
-    "pylint",
-    "mypy",
-    "pre-commit",
-    "lxml",
-    # Testing
-    "pytest",
-    "pytest-cov",
     # Building
     "scikit-build-core",
-    "shiboken6_generator==6.5.3",
-    "PySide6==6.5.3",
+    "shiboken6_generator==6.7.2",
+    "PySide6==6.7.2",
     "setuptools_scm",
 ]
 
 [build-system]
-requires = ["scikit-build-core", "shiboken6_generator==6.5.3", "PySide6==6.5.3"]
+requires = ["scikit-build-core", "shiboken6_generator==6.7.2", "PySide6==6.7.2"]
 build-backend = "scikit_build_core.build"
 
 [tool.scikit-build]
 metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
 sdist.include = ["QuickGraphLib/_version.py"]
-sdist.exclude = [".github", ".vscode"]
+sdist.exclude = [".github", ".vscode", "docs", "examples"]
 wheel.py-api = "cp37"
 
 [tool.scikit-build.cmake.define]
@@ -60,7 +51,7 @@ INSTALL_SUBPATH = "."
 write_to = "QuickGraphLib/_version.py"
 
 [tool.cibuildwheel]
-build = "cp312-win_amd64"
+build = "cp3{11,12}-win_amd64"
 before-all = "python ci/setup_qt.py"
 repair-wheel-command = ""
 build-frontend = "build"
@@ -69,15 +60,6 @@ build-frontend = "build"
 SKBUILD_CMAKE_DEFINE = "CMAKE_PREFIX_PATH=\"$(python ci/find_qt.py)/lib/cmake\""
 PIP_EXTRA_INDEX_URL = "https://download.qt.io/official_releases/QtForPython/"
 
-[tool.cibuildwheel.macos]
-archs = ["universal2"]
-
-[tool.cibuildwheel.linux.environment]
-SKBUILD_CMAKE_DEFINE = "CMAKE_PREFIX_PATH=\"$(python ci/find_qt.py)/lib/cmake\""
-PIP_EXTRA_INDEX_URL = "https://download.qt.io/official_releases/QtForPython/"
-LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:$(python ci/find_qt.py)/lib"
-LLVM_INSTALL_DIR = "/usr"
-
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
 
@@ -85,12 +67,3 @@ archs = ["AMD64"]
 profile = "black"
 force_alphabetical_sort_within_sections = true
 combine_as_imports = true
-
-[tool.pylint.main]
-extension-pkg-whitelist = ["PySide6"]
-
-[tool.pylint.'messages control']
-disable = [
-    "R", # R=Refactor
-    "C", # C=Conventions
-]
