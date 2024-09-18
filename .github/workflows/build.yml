@@ -61,15 +61,6 @@ jobs:
           .\activate_venv.ps1
           pre-commit run --all-files --show-diff-on-failure
 
-      - name: Build docs
-        run: |
-          .\activate_venv.ps1
-          python docs/build_docs.py
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: QuickGraphLib-docs
-          path: dist/docs/*
 
   build-wheels:
     name: Build wheels on ${{ matrix.os }}
@@ -129,15 +120,6 @@ jobs:
         with:
           name: QuickGraphLib-sdist
           path: dist
-
-      - name: "Download docs"
-        uses: actions/download-artifact@v4
-        with:
-          name: QuickGraphLib-docs
-          path: docs
-
-      - name: Zip docs
-        run: zip -r docs.zip docs
 
       - name: Release
         id: deployment
