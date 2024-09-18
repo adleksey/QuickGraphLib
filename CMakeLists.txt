@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2024 Refeyn Ltd and other QuickGraphLib contributors
 # SPDX-License-Identifier: MIT
 
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.30.3)
 set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "" FORCE)
 
 project(QuickGraphLib VERSION 1.0.0 LANGUAGES CXX)
