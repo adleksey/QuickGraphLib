@@ -5,6 +5,9 @@
 set(CMAKE_PROGRAM_PATH "${CMAKE_PROGRAM_PATH};${CMAKE_SOURCE_DIR}/venv/Scripts")
 find_package(Python COMPONENTS Interpreter Development.SABIModule REQUIRED)
 
+
+add_definitions(-DPy_LIMITED_API=0x030C0000)
+
 # Macro to get various pyside / python include / link flags and paths.
 # Uses the not entirely supported utils/pyside_config.py file.
 macro(pyside_config option output_var)
