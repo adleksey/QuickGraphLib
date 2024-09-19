@@ -131,7 +131,7 @@ python_add_library(
     ShibokenHelpers.cpp
     WITH_SOABI
     USE_SABI
-    3.11
+    3.12
 )
 
 # Apply relevant include and link flags.
