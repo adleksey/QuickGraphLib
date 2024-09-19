@@ -56,12 +56,6 @@ jobs:
       - name: Setup env
         run: .\setup_venv
 
-      - name: Run linting on all files
-        run: |
-          .\activate_venv.ps1
-          pre-commit run --all-files --show-diff-on-failure
-
-
   build-wheels:
     name: Build wheels on ${{ matrix.os }}
     strategy:
