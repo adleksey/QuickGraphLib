@@ -3,10 +3,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 set(CMAKE_PROGRAM_PATH "${CMAKE_PROGRAM_PATH};${CMAKE_SOURCE_DIR}/venv/Scripts")
-find_package(
-  Python
-  COMPONENTS Interpreter Development.Module
-  REQUIRED)
+find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
 
 # Macro to get various pyside / python include / link flags and paths.
 # Uses the not entirely supported utils/pyside_config.py file.
