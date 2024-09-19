@@ -3,10 +3,10 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 set(CMAKE_PROGRAM_PATH "${CMAKE_PROGRAM_PATH};${CMAKE_SOURCE_DIR}/venv/Scripts")
-find_package(Python COMPONENTS Interpreter Development.SABIModule REQUIRED)
-
-
-add_definitions(-DPy_LIMITED_API=0x030C0000)
+find_package(
+  Python
+  COMPONENTS Interpreter Development.Module
+  REQUIRED)
 
 # Macro to get various pyside / python include / link flags and paths.
 # Uses the not entirely supported utils/pyside_config.py file.
@@ -133,8 +133,6 @@ python_add_library(
     ShibokenHelpers.hpp
     ShibokenHelpers.cpp
     WITH_SOABI
-    USE_SABI
-    3.12
 )
 
 # Apply relevant include and link flags.
